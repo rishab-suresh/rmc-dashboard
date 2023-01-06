@@ -1,0 +1,106 @@
+{
+  "project_info": {
+    "project_number": "497961924911",
+    "firebase_url": "https://rmc-employee-default-rtdb.firebaseio.com",
+    "project_id": "rmc-employee",
+    "storage_bucket": "rmc-employee.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:497961924911:android:2ef4465dd9de1aed5c49da",
+        "android_client_info": {
+          "package_name": "com.koushikjoshi.rmcadmin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "497961924911-2q19ui3ofcgl2ug3vuh3cg395prml6sf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcCiWzw4p_Tb3RHM87UxRW4UjJ5IBY6SM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "497961924911-2q19ui3ofcgl2ug3vuh3cg395prml6sf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:497961924911:android:7eb8c09d41a109c05c49da",
+        "android_client_info": {
+          "package_name": "com.koushikjoshi.rmcemployee"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "497961924911-f7bbpk8qicqlond10js9epeksooapbhf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.koushikjoshi.rmcemployee",
+            "certificate_hash": "9ace7c42dd1cdef6e5fd8da2d94cc10f56fdbe26"
+          }
+        },
+        {
+          "client_id": "497961924911-2q19ui3ofcgl2ug3vuh3cg395prml6sf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcCiWzw4p_Tb3RHM87UxRW4UjJ5IBY6SM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "497961924911-2q19ui3ofcgl2ug3vuh3cg395prml6sf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:497961924911:android:f495e14556e85d9f5c49da",
+        "android_client_info": {
+          "package_name": "com.koushikjoshi.rmcschedule"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "497961924911-2q19ui3ofcgl2ug3vuh3cg395prml6sf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcCiWzw4p_Tb3RHM87UxRW4UjJ5IBY6SM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "497961924911-2q19ui3ofcgl2ug3vuh3cg395prml6sf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
