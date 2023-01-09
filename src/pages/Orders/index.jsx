@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "../styles.css";
 import { Table } from "react-bootstrap";
 import { initializeApp } from "firebase/app";
@@ -19,6 +19,7 @@ const getStyles = (activity) => {
 
 export const Orders = () => {
   const [users, setUsers] = useState([]);
+  const scrollRef = useRef(null);
 
   useEffect(() => {
     const config = {
@@ -45,13 +46,33 @@ export const Orders = () => {
       setUsers(users);
     });
   }, [setUsers]);
+  const handleClick = () => {
+    scrollRef.current.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+      inline: "center",
+    });
+  };
 
   return (
-    <div>
-      {users.map((user) => (
-        <User key={user.userId} user={user} />
-      ))}
-    </div>
+    <>
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Status</th>
+            <th>Productive</th>
+            <th>Idle</th>
+            <th>Break</th>
+          </tr>
+        </thead>
+      </Table>
+      <div ref={scrollRef}>
+        {users.map((user) => (
+          <User key={user.userId} user={user} />
+        ))}
+      </div>
+    </>
   );
 };
 
@@ -179,19 +200,9 @@ const User = ({ user }) => {
     return `${hours}:${minutes}:${seconds}`;
   };
 
-
   return (
     <div>
       <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Status</th>
-            <th>Productive</th>
-            <th>Idle</th>
-            <th>Break</th>
-          </tr>
-        </thead>
         <tbody style={styles}>
           <tr>
             <td>

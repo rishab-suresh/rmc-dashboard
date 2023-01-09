@@ -68,9 +68,12 @@ table {
   width: 100%;
   margin: auto;
 }
+thead{
+  margin-left: 30px;
+}
 th {
   text-align: left;
-  padding: 12px 24px;
+  padding: 12px;
   background: transparent;
   box-shadow: none;
   color: #2d83b5;
@@ -79,6 +82,11 @@ th {
   line-height: 1.25;
   letter-spacing: 0.035em;
   border-bottom: 0.05rem solid rgb(240, 242, 245);
+  padding-left: 100px;
+ 
+}
+.name{
+  width:30px
 }
 tbody {
   display: table-row-group;
@@ -87,7 +95,8 @@ tr {
   color: inherit;
   display: table-row;
   vertical-align: middle;
-  height: 160px;
+  height: 60px;
+  width: 50px;
   outline: 0px;
 }
 .headers {
@@ -102,6 +111,7 @@ td {
   background: transparent;
   box-shadow: none;
   border-bottom: 0.05rem solid rgb(240, 242, 245);
+  width: 50px;
 }
 td div {
   display: flex;
