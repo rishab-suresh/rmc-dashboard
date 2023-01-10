@@ -19,7 +19,6 @@ const getStyles = (activity) => {
 
 export const Orders = () => {
   const [users, setUsers] = useState([]);
-  const scrollRef = useRef(null);
 
   useEffect(() => {
     const config = {
@@ -46,13 +45,6 @@ export const Orders = () => {
       setUsers(users);
     });
   }, [setUsers]);
-  const handleClick = () => {
-    scrollRef.current.scrollIntoView({
-      behavior: "smooth",
-      block: "center",
-      inline: "center",
-    });
-  };
 
   return (
     <>
@@ -67,11 +59,10 @@ export const Orders = () => {
           </tr>
         </thead>
       </Table>
-      <div ref={scrollRef}>
-        {users.map((user) => (
-          <User key={user.userId} user={user} />
-        ))}
-      </div>
+
+      {users.map((user) => (
+        <User key={user.userId} user={user} />
+      ))}
     </>
   );
 };

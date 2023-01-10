@@ -68,7 +68,7 @@ table {
   width: 100%;
   margin: auto;
 }
-thead{
+thead {
   margin-left: 30px;
 }
 th {
@@ -83,10 +83,9 @@ th {
   letter-spacing: 0.035em;
   border-bottom: 0.05rem solid rgb(240, 242, 245);
   padding-left: 100px;
- 
 }
-.name{
-  width:30px
+.name {
+  width: 30px;
 }
 tbody {
   display: table-row-group;
@@ -96,7 +95,7 @@ tr {
   display: table-row;
   vertical-align: middle;
   height: 60px;
-  width: 50px;
+  width: auto;
   outline: 0px;
 }
 .headers {
@@ -111,7 +110,7 @@ td {
   background: transparent;
   box-shadow: none;
   border-bottom: 0.05rem solid rgb(240, 242, 245);
-  width: 50px;
+  width: 100px;
 }
 td div {
   display: flex;
@@ -126,14 +125,11 @@ td div {
 }
 td span {
   margin: 0px;
-  font-size: 20px;
-  line-height: 1.25;
-  letter-spacing: 0.035em;
   opacity: 1;
   text-transform: none;
   vertical-align: unset;
   text-decoration: none;
-  color: gray;
+  color: rgb(0, 0, 0);
   font-weight: 700;
 }
 .dashboard-content-icon {
@@ -191,15 +187,14 @@ td span {
 .sticky-button:focus {
   background-color: #fff;
   border: 1px solid #d5d9d9;
-  
 }
 
-.NameLinks{
+.NameLinks {
   text-decoration: none;
   color: rgb(131, 131, 131);
 }
 
-.NameLinks:hover{
+.NameLinks:hover {
   color: #2d83b5;
   transition: ease-in, 800ms;
 }
