@@ -12,6 +12,10 @@ const getStyles = (activity) => {
       return { backgroundColor: "yellow" };
     case "productive":
       return { backgroundColor: "#ccffcc" };
+    case "Meeting":
+      return { backgroundColor: "#b5eef5" };
+    case "OnMail":
+      return { backgroundColor: "#f1d6a0" };
     default:
       return {};
   }
@@ -53,9 +57,11 @@ export const Orders = () => {
           <tr>
             <th>Name</th>
             <th>Status</th>
-            <th>Productive</th>
+            <th>On Call</th>
             <th>Idle</th>
             <th>Break</th>
+            <th> In Meeting</th>
+            <th>On Mail</th>
           </tr>
         </thead>
       </Table>
@@ -71,10 +77,13 @@ const User = ({ user }) => {
   const [idle, setIdle] = useState();
   const [productive, setProductive] = useState();
   const [breakTimer, setBreakTimer] = useState();
-
+  const [meeting, setMeeting] = useState();
+  const [onMail, setOnMail] = useState();
   const [breakTime, setBreakTime] = useState(0);
   const [idleTime, setIdleTime] = useState(0);
   const [productiveTime, setProductiveTime] = useState(0);
+  const [meetingTime, setMeetingTime] = useState(0);
+  const [onMailTime, setOnMailTime] = useState(0);
   const [activity, setActivity] = useState("idle");
 
   useEffect(() => {
@@ -84,8 +93,12 @@ const User = ({ user }) => {
       setActivity("break");
     } else if (productive === "1") {
       setActivity("productive");
+    } else if (meeting === "1") {
+      setActivity("Meeting");
+    } else if (onMail === "1") {
+      setActivity("OnMail");
     }
-  }, [idle, productive, breakTimer]);
+  }, [idle, productive, breakTimer, meeting, onMail]);
 
   const styles = getStyles(activity);
   useEffect(() => {
@@ -135,9 +148,25 @@ const User = ({ user }) => {
         .child("Break")
         .val();
 
+      var meetingVal = snapshot
+        .child("Activity")
+        .child(recentDate)
+        .child("Status")
+        .child("Meeting")
+        .val();
+
+      var onMailVal = snapshot
+        .child("Activity")
+        .child(recentDate)
+        .child("Status")
+        .child("OnMail")
+        .val();
+
       setIdle(idleVal);
       setProductive(productiveVal);
       setBreakTimer(breakTimerVal);
+      setMeeting(meetingVal);
+      setOnMail(onMailVal);
     });
   }, [user.userId]);
 
@@ -182,6 +211,34 @@ const User = ({ user }) => {
 
     return () => clearInterval(intervalId);
   }, [productive]);
+
+  useEffect(() => {
+    let intervalId;
+
+    if (meeting == "1") {
+      intervalId = setInterval(() => {
+        setMeetingTime((meetingTime) => meetingTime + 1000);
+      }, 1000);
+    } else {
+      clearInterval(intervalId);
+    }
+
+    return () => clearInterval(intervalId);
+  }, [meeting]);
+
+  useEffect(() => {
+    let intervalId;
+
+    if (onMail == "1") {
+      intervalId = setInterval(() => {
+        setOnMailTime((onMailTime) => onMailTime + 1000);
+      }, 1000);
+    } else {
+      clearInterval(intervalId);
+    }
+
+    return () => clearInterval(intervalId);
+  }, [onMail]);
   // similar useEffect for breakTime and productiveTime state variables
 
   const formatTime = (time) => {
@@ -210,6 +267,12 @@ const User = ({ user }) => {
             </td>
             <td>
               <span>{formatTime(breakTime)}</span>
+            </td>
+            <td>
+              <span> {formatTime(meetingTime)} </span>
+            </td>
+            <td>
+              <span> {formatTime(onMailTime)} </span>
             </td>
           </tr>
         </tbody>
