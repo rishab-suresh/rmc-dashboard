@@ -121,12 +121,13 @@ const User = ({ user }) => {
       var count = 0;
       let recentDate;
       snapshot.child("Activity").forEach((child) => {
-        if (count == statusSize - 1) {
+        if (count == 0) {
           recentDate = child.key;
           console.log(recentDate);
         }
         count++;
       });
+      
       console.log(recentDate);
       var idleVal = snapshot
         .child("Activity")
