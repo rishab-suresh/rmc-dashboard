@@ -3,6 +3,7 @@ import "../styles.css";
 import { Table } from "react-bootstrap";
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, onValue, child } from "firebase/database";
+import moment from "moment/moment";
 
 const getStyles = (activity) => {
   switch (activity) {
@@ -116,49 +117,53 @@ const User = ({ user }) => {
     const db = getDatabase();
 
     const userRef = ref(db, `users/${user.userId}`);
+    let recentDate;
+    let count = 0;
+
     onValue(userRef, (snapshot) => {
-      var statusSize = snapshot.child("Activity").size;
-      var count = 0;
-      let recentDate;
       snapshot.child("Activity").forEach((child) => {
-        if (count == 0) {
-          recentDate = child.key;
-          console.log(recentDate);
+        const childDate = new Date(child.key);
+        if (count == 0 || childDate > recentDate) {
+          recentDate = childDate;
         }
         count++;
       });
-      
-      console.log(recentDate);
+
+     
+
+      const currentDate = moment(recentDate).format("DD MMM YYYY")
+      console.log(currentDate)
+
       var idleVal = snapshot
         .child("Activity")
-        .child(recentDate)
+        .child(currentDate)
         .child("Status")
         .child("Idle")
         .val();
 
       var productiveVal = snapshot
         .child("Activity")
-        .child(recentDate)
+        .child(currentDate)
         .child("Status")
         .child("Productive")
         .val();
       var breakTimerVal = snapshot
         .child("Activity")
-        .child(recentDate)
+        .child(currentDate)
         .child("Status")
         .child("Break")
         .val();
 
       var meetingVal = snapshot
         .child("Activity")
-        .child(recentDate)
+        .child(currentDate)
         .child("Status")
         .child("Meeting")
         .val();
 
       var onMailVal = snapshot
         .child("Activity")
-        .child(recentDate)
+        .child(currentDate)
         .child("Status")
         .child("OnMail")
         .val();
